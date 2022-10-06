@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Site01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,26 @@ namespace Site01.Controllers
             // return new ContentResult() { Content = "Hello world"};
             return View();
         }
-
-        public string Test()
+        [HttpGet]
+        public IActionResult Login()
         {
-            return "Test!";
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login([FromForm]User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            if(user.Email == "tarcisio@tarcisio.com" && user.Password == "123456")
+            {
+                return RedirectToAction("Index","Palavra");
+            }
+
+            ViewBag.Message = "Invalid Email or Password";
+            return View();
         }
     }
 }

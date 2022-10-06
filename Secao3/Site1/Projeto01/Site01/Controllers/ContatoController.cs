@@ -12,14 +12,20 @@ namespace Site01.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Contato = new Contato();
             return View();
         }
 
         public IActionResult Register([FromForm]Contato contato)
         {
-            if (!ModelState.IsValid) return View(nameof(Index));
+            if (!ModelState.IsValid) 
+            {
+                ViewBag.Contato = contato;
+                return View(nameof(Index));
+            };
 
             SendMails.SendMessageContact(contato);
+            ViewBag.Contato = new Contato();
             ViewBag.Message = "Messagem enviada com sucesso!";
             string content =  contato.ToString();
             return  View(nameof(Index));

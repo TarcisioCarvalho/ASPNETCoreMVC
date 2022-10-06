@@ -16,22 +16,22 @@
         <form method="post" action="/contato/register">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="@ViewBag.Contato.Name">
                 @Html.ValidationMessage("name")
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" value="@ViewBag.Contato.Email">
                 @Html.ValidationMessage("email")
             </div>
             <div class="form-group">
                 <label for="subject">Subject</label>
-                <input type="text" name="subject" class="form-control" id="subject" placeholder="Enter Subject">
+                <input type="text" name="subject" class="form-control" id="subject" placeholder="Enter Subject" value="@ViewBag.Contato.Subject">
                 @Html.ValidationMessage("subject")
             </div>
             <div class="form-group">
                 <label for="name">Message</label>
-                <textarea name="message" class="form-control" id="message"></textarea>
+                <textarea name="message" class="form-control" id="message" value="@ViewBag.Contato.Message"></textarea>
                 @Html.ValidationMessage("message")
             </div>
             @ViewBag.Message
