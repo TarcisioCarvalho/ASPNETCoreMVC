@@ -25,29 +25,47 @@ namespace Site01.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
-            return View();
+            return View(new Palavra());
         }
 
         [HttpPost]
         public IActionResult Cadastrar([FromForm]Palavra palavra)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _db.Palavras.Add(palavra);
+                _db.SaveChanges();
+                var palavras = _db.Palavras.ToList();
+                return View(nameof(Index),palavras);
+            }
+          
+            return View(palavra);
         }
         [HttpGet]
-        public IActionResult Atualizar()
+        public IActionResult Atualizar(int id)
         {
-            return View(nameof(Cadastrar));
+            Palavra palavra = _db.Palavras.Find(id);
+            return View(nameof(Cadastrar),palavra);
         }
         [HttpPost]
         public IActionResult Atualizar([FromForm] Palavra palavra)
         {
-            return View(nameof(Cadastrar));
+            if (ModelState.IsValid)
+            {
+                _db.Palavras.Update(palavra);
+                _db.SaveChanges();
+                var palavras = _db.Palavras.ToList();
+                return View(nameof(Index), palavras);
+            }
+            return View(nameof(Cadastrar),palavra);
         }
         [HttpGet]
-        public IActionResult Deletar([FromForm] Palavra palavra)
+        public IActionResult Deletar(int id)
         {
-            // TODO 
-            return RedirectToAction();
+            Palavra palavra = _db.Palavras.Find(id);
+            _db.Palavras.Remove(palavra);
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model Site01.Models.Palavra
 @{
     Layout = null;
 }
@@ -14,15 +14,15 @@
 <body>
     <div class="container">
         <form method="post" >
+            <input type="hidden" id="Id" name="Id" value="@Model.Id"/>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="@Model.Name">
                
             </div>
             <div class="form-group">
                 <label for="nivel">Nivel</label>
-                <input type="number" name="nivel" class="form-control" id="nivel" placeholder="Enter Your Nível 1, 2 or 3" value="">
-             
+                <input type="number" name="nivel" class="form-control" id="nivel" placeholder="Enter Your Nível 0,1 or 2" value="@Model.Nivel">
             </div>
           
             <button type="submit" class="btn btn-primary">Save</button>
