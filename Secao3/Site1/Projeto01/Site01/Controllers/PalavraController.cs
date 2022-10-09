@@ -35,8 +35,7 @@ namespace Site01.Controllers
             {
                 _db.Palavras.Add(palavra);
                 _db.SaveChanges();
-                var palavras = _db.Palavras.ToList();
-                return View(nameof(Index),palavras);
+                return RedirectToAction(nameof(Index));
             }
           
             return View(palavra);
@@ -54,8 +53,7 @@ namespace Site01.Controllers
             {
                 _db.Palavras.Update(palavra);
                 _db.SaveChanges();
-                var palavras = _db.Palavras.ToList();
-                return View(nameof(Index), palavras);
+                return RedirectToAction(nameof(Index));
             }
             return View(nameof(Cadastrar),palavra);
         }

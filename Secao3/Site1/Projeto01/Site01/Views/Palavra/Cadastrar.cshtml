@@ -1,32 +1,22 @@
 ﻿@model Site01.Models.Palavra
 @{
-    Layout = null;
+    Layout = "_Layout";
+}
+@{
+    ViewBag.Title = "Palavra - Listagem";
 }
 
-<!DOCTYPE html>
+<form method="post">
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="@Model.Name">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Cadastrar</title>
-</head>
-<body>
-    <div class="container">
-        <form method="post" >
-            <input type="hidden" id="Id" name="Id" value="@Model.Id"/>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="@Model.Name">
-               
-            </div>
-            <div class="form-group">
-                <label for="nivel">Nivel</label>
-                <input type="number" name="nivel" class="form-control" id="nivel" placeholder="Enter Your Nível 0,1 or 2" value="@Model.Nivel">
-            </div>
-          
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
     </div>
-</body>
-</html>
+    <div class="form-group">
+        <label for="nivel">Nivel</label>
+        <input type="number" name="nivel" class="form-control" id="nivel" placeholder="Enter Your Nível 0,1 or 2" value="@Model.Nivel">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
