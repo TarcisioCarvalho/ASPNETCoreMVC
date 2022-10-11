@@ -23,6 +23,8 @@ namespace Site01
                 options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Site01;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
             );
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,7 +37,7 @@ namespace Site01
 
             //www.dominio.com.br/noticia/visualizar/acidentes
             //{dominio}/controller/action/{id?}
-
+            app.UseSession();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
 

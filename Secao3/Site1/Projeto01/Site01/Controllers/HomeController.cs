@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Site01.Models;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,17 @@ namespace Site01.Controllers
 
             if(user.Email == "tarcisio@tarcisio.com" && user.Password == "123456")
             {
+                HttpContext.Session.SetString("Login", "True");
                 return RedirectToAction("Index","Palavra");
             }
 
             ViewBag.Message = "Invalid Email or Password";
             return View();
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
