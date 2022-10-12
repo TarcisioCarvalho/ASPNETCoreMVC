@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Site01.Libary.Filters;
 
 namespace Site01.Controllers
 {
+    [Login]
     public class PalavraController : Controller
     {
         private DataBaseContext _db;
