@@ -31,6 +31,7 @@ namespace Site01.Controllers
             if(user.Email == "tarcisio@tarcisio.com" && user.Password == "123456")
             {
                 HttpContext.Session.SetString("Login", "True");
+                
                 return RedirectToAction("Index","Palavra");
             }
 

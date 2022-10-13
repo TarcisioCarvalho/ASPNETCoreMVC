@@ -4,19 +4,24 @@
 @{
     Layout = "_Layout";
 }
+@if (TempData["MessagemErro"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        @TempData["MessagemErro"];
+    </div>
+}
 
-
-        <form method="post" action="/home/login">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" value="">
-                @Html.ValidationMessage("email")
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" value="">
-                @Html.ValidationMessage("subject")
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        @ViewBag.Message
+<form method="post" action="/home/login">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" value="">
+        @Html.ValidationMessage("email")
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" value="">
+        @Html.ValidationMessage("subject")
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+@ViewBag.Message
