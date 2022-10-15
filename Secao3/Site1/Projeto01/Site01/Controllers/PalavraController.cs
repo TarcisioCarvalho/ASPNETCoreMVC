@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Site01.Libary.Filters;
+using X.PagedList;
 
 namespace Site01.Controllers
 {
@@ -18,10 +19,12 @@ namespace Site01.Controllers
             _db = db;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int? pages)
         {
+            var pageNumber = pages ?? 1;
             var Palavras = _db.Palavras.ToList();
-            return View(Palavras);
+            var resultadoPaginado = Palavras.ToPagedList(pageNumber, 5); 
+            return View(resultadoPaginado);
         }
 
         [HttpGet]
